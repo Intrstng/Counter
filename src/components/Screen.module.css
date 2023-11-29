@@ -1,0 +1,10 @@
+.primary {
+    font-size: 40px;
+    font-family: 'Comic Sans MS';
+}
+
+.overlimit {
+    font-size: 48px;
+    font-family: 'Comic Sans MS';
+    color: red;
+}
