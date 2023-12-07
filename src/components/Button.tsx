@@ -1,29 +1,21 @@
 import React, {FC} from 'react';
-import styled from 'styled-components';
 
 export type ButtonPropsType = {
     name: string
-    isDisabled: boolean
+    isDisabled?: boolean
+    classList: string
     callback: () => void
 }
 
 export const Button: FC<ButtonPropsType> = ( { name,
+                                               classList,
                                                isDisabled,
                                                callback } ) => {
     return (
-        <ButtonContent onClick={callback}
-                        disabled={isDisabled}>
+        <button className={classList}
+                disabled={isDisabled}
+                onClick={callback}>
             {name}
-        </ButtonContent>
+        </button>
     )
 }
-
-const ButtonContent = styled.button `
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  background-color: #65cff4;
-  font-size: 20px;
-  font-family: 'Comic Sans MS';
-  cursor: pointer;
-`

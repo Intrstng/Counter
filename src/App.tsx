@@ -1,35 +1,23 @@
 import React, {useState} from 'react';
 import './App.css';
-import styled from 'styled-components';
-import {Screen} from './components/Screen';
-import {Controls} from './components/Controls';
+import {View} from './components/View/View';
+import {Controller} from './components/Controller/Controller';
 
-function App() {
-    let [counter, setCounter] = useState<number>(0);
+export const App = () => {
+    const [counter, setCounter] = useState<number>(0);
+
     const increaseCounter = () => {
-        counter < 5 && setCounter(++counter);
+        counter < 5 && setCounter(counter + 1);
     }
     const resetCounter = () => {
         setCounter(0);
     }
     return (
-        <AppContent className="App">
-            <Screen value={counter}/>
-            <Controls counter={counter}
-                      increaseCounter={increaseCounter}
-                      resetCounter={resetCounter}/>
-        </AppContent>
+        <div className="App">
+            <View value={counter}/>
+            <Controller counter={counter}
+                        increaseCounter={increaseCounter}
+                        resetCounter={resetCounter}/>
+        </div>
     );
 }
-
-export default App;
-
-
-const AppContent = styled.div`
-  width: 250px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #385f5d;
-  border-radius: 20px;
-`
