@@ -18,6 +18,14 @@ body {
 }
 
 .App {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.widget {
     width: 265px;
     padding: 20px;
     display: flex;

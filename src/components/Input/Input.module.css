@@ -1,0 +1,36 @@
+label {
+    display: inline-block;
+    width: 45%;
+    font-size: 16px;
+    font-family: 'Comic Sans MS';
+    color: #0544bb;
+}
+
+input[type='number'] {
+    margin-bottom: 8px;
+    padding-left: 5px;
+    text-align: center;
+    width: 55%;
+    height: 25px;
+    border: 1px solid #5f3856;
+    background-color: #cef1d5;
+    border-radius: 4px;
+}
+
+.inputField {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    font-family: 'Arial';
+    font-weight: bold;
+    width: 180px;
+}
+
+input.error {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+}
+
+input.error:focus {
+    outline-color: red;
+}
