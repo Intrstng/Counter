@@ -1,0 +1,25 @@
+.controller {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    border: 2px solid #385f5d;
+    border-radius: 20px;
+}
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    padding: 5px 20px;
+    background-color: #506fe2;
+    font-size: 20px;
+    font-family: 'Comic Sans MS';
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btn:disabled {
+    background-color: #7bb6d4;
+    color: #4966a7;
+}

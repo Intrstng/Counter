@@ -11,12 +11,12 @@ type SettingsInterfacePropsType = {
     setInputError: (value: boolean) => void
 }
 
-export const SettingsInterface: FC<SettingsInterfacePropsType> = ({   maxValue,
-                                                                      startValue,
-                                                                      inputError,
-                                                                      setMaxValueInput,
-                                                                      setStartValueInput,
-                                                                      setInputError
+export const SettingsInterface: FC<SettingsInterfacePropsType> = ({ maxValue,
+                                                                    startValue,
+                                                                    inputError,
+                                                                    setMaxValueInput,
+                                                                    setStartValueInput,
+                                                                    setInputError
 }) => {
     const onChangeMaxValueInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
       if ((Number(e.currentTarget.value) < 0 || startValue < 0)

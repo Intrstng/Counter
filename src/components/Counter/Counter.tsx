@@ -7,8 +7,8 @@ type CounterPropsType = {
     counter: number
     maxValue: number
     startValue: number
-    counterMsg: boolean
     inputError: boolean
+    setDataToLocalStorage: () => void
     increaseCounter: () => void
     resetCounter: () => void
 }
@@ -17,24 +17,25 @@ export const Counter: FC<CounterPropsType> = ({
                                                   counter,
                                                   maxValue,
                                                   startValue,
-                                                  counterMsg,
                                                   increaseCounter,
                                                   resetCounter,
-                                                  inputError
+                                                  inputError,
+                                                  setDataToLocalStorage
+
 }) => {
     return (
-        <div className={'widget'}>
-            <View value={counter}
-                  counterMsg={counterMsg}
-                  maxValue={maxValue}
-                  startValue={startValue}
-                  inputError={inputError}/>
-            <Controller counter={counter}
-                        maxValue={maxValue}
-                        startValue={startValue}
-                        inputError={inputError}
-                        increaseCounter={increaseCounter}
-                        resetCounter={resetCounter}/>
-        </div>
+      <div className={'widget'}>
+          <View value={counter}
+                maxValue={maxValue}
+                startValue={startValue}/>
+          <Controller counter={counter}
+                      maxValue={maxValue}
+                      startValue={startValue}
+                      inputError={inputError}
+                      setDataToLocalStorage={setDataToLocalStorage}
+                      increaseCounter={increaseCounter}
+                      resetCounter={resetCounter}/>
+      </div>
     );
 };
+

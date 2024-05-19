@@ -5,17 +5,15 @@ import { SettingsInterface } from '../SettingsInterface/SettingsInterface';
 type SettingsPropsType = {
     maxValue: number
     startValue: number
-    isSetBtnDisabled: boolean
     inputError: boolean
     setMaxValueInput: (value: number) => void
-  setStartValueInput: (value: number) => void
+    setStartValueInput: (value: number) => void
     setInputError: (value: boolean) => void
     setDataToLocalStorage: () => void
 }
 
 export const Settings: FC<SettingsPropsType> = ({   maxValue,
                                                     startValue,
-                                                    isSetBtnDisabled,
                                                     inputError,
                                                     setMaxValueInput,
                                                     setStartValueInput,
@@ -31,9 +29,10 @@ export const Settings: FC<SettingsPropsType> = ({   maxValue,
                                setMaxValueInput={setMaxValueInput}
                                setStartValueInput={setStartValueInput}
                                setInputError={setInputError}/>
-            <SettingsController isSetBtnDisabled={isSetBtnDisabled}
+            <SettingsController maxValue={maxValue}
+                                startValue={startValue}
                                 inputError={inputError}
-                                setDataToLocalStorage={setDataToLocalStorage} />
+                                setDataToLocalStorage={setDataToLocalStorage}/>
         </div>
     );
 };

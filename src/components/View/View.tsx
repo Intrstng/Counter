@@ -5,25 +5,18 @@ type ViewPropsType = {
     value: number
     maxValue: number
     startValue: number
-    counterMsg: boolean
-    inputError: boolean
 }
 
 export const View: FC<ViewPropsType> = ({value,
                                          maxValue,
-                                         startValue,
-                                         counterMsg,
-                                          inputError
+                                         startValue
 }) => {
     const finalClassList: string = `${S.primary}
                                     ${value === maxValue && S.overlimit}
-                                    ${(maxValue === startValue || !counterMsg) && S.message}
-                                    ${inputError && S.error}
+                                    ${maxValue === startValue && S.message}
                                     `
-  const message = inputError
-                  ? 'Incorrect value!'
-                  : (maxValue === startValue || !counterMsg)
-                    ? 'Enter values and press set'
+  const message = maxValue === startValue
+                    ? `To enter settings menu press 'set'`
                     : value;
     return (
         <div className={S.view}>

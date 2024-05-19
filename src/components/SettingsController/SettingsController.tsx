@@ -3,17 +3,19 @@ import S from './SettingsController.module.css';
 import {Button} from '../Button';
 
 type SettingsController = {
-  isSetBtnDisabled: boolean
+  maxValue: number
+  startValue: number
   inputError: boolean
   setDataToLocalStorage: () => void
 }
 
-export const SettingsController: FC<SettingsController> = ({isSetBtnDisabled,
-                                                            inputError,
-                                                            setDataToLocalStorage}) => {
+export const SettingsController: FC<SettingsController> = ({ maxValue,
+                                                             startValue,
+                                                             inputError,
+                                                             setDataToLocalStorage}) => {
     return (
         <div className={S.settingsController}>
-            <Button isDisabled={isSetBtnDisabled || inputError}
+            <Button isDisabled={maxValue === startValue || inputError}
                     callback={setDataToLocalStorage}
                     name={'set'}
                     classList={S.btn}/>
