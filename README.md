@@ -1,28 +1,39 @@
-*** Counter tasks
-** Part I
-branch `main`
+# Counter task
+
+## Part I
+
+branch: `main`
 
 Implementation of the counter
 
-** Part II
-branch `Counter_2.0`
+## Part II
+
+branch: `Counter_2.0`
 
 Advanced counter from part I with settings and storing settings in LocalStorage
 
 Implementation of the counter in accordance with the [task](https://www.youtube.com/watch?v=RmOHf2NQln8)
 
-** Part III
-branch `Counter_3.0`
+## Part III
+
+branch: `Counter_3.0`
 
 Advanced counter from part II with conditional rendering
 
 Implementation of the counter in accordance with the [task](https://www.youtube.com/watch?v=AnT42jUgnys)
 
-** Part IV
-branch `Counter_4.0_with_Redux`
+## Part IV
+
+branch: `Counter_4.0_with_Redux`
 
 Advanced counter from Part III using Redux and reducer implementation of reducers tests (without LocalStorage)
 
+## Part V
+
+branch: `Counter_5.0_with_Redux_and_Local_Storage`
+
+Advanced counter from Part IV (Redux State to Local Storage).
+[Persisting Redux State to Local Storage](https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e)
 
 
 ### `yarn start`

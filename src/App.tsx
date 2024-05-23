@@ -35,7 +35,6 @@ export const App = () => {
             startValue
         }
         dispatch(setCounterAC(startValue));
-        localStorage.setItem('values', JSON.stringify(values));
         !showSettings ? setShowSettings(true) : setShowSettings(false);
     }
 
