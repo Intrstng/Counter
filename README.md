@@ -33,6 +33,7 @@ Advanced counter from Part III using Redux and reducer implementation of reducer
 branch: `Counter_5.0_with_Redux_and_Local_Storage`
 
 Advanced counter from Part IV (Redux State to Local Storage).
+
 [Persisting Redux State to Local Storage](https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e)
 
 

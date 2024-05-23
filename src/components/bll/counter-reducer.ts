@@ -4,7 +4,7 @@ export type CounterInitType = {
 }
 
 const counterInit: CounterInitType = {
-  currentValue: 0
+  currentValue: 3
 }
 
 export type CounterType = {

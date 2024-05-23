@@ -23,8 +23,8 @@ export const store = createStore(rootReducer, persistedState);
 export type AppStoreType = typeof store // ??????
 
 store.subscribe(throttle(() => { // added
-  saveState({
-    counter: store.getState().counter,
+  saveState({ // saveState(store.getState()) or:
+    // counter: store.getState().counter,
     maxValue: store.getState().maxValue,
     startValue: store.getState().startValue
   });

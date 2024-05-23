@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import {Counter} from './components/Counter/Counter';
 import {Settings} from './components/Settings/Settings';
@@ -16,6 +16,10 @@ export const App = () => {
     const startValue = useSelector<AppRootState, number>( (state) => state.startValue.currentStartValue );
     const [inputError, setInputError] = useState<boolean>(false);
     const [showSettings, setShowSettings] = useState<boolean>(false);
+
+    useEffect(() => {
+        dispatch(setCounterAC(startValue));
+    }, []);
 
     const increaseCounter = () => {
         counter < maxValue && dispatch(increaseCounterAC());
