@@ -1,10 +1,29 @@
-# Getting Started with Create React App
+*** Counter tasks
+** Part I
+branch `main`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Implementation of the counter
 
-## Available Scripts
+** Part II
+branch `Counter_2.0`
 
-In the project directory, you can run:
+Advanced counter from part I with settings and storing settings in LocalStorage
+
+Implementation of the counter in accordance with the [task](https://www.youtube.com/watch?v=RmOHf2NQln8)
+
+** Part III
+branch `Counter_3.0`
+
+Advanced counter from part II with conditional rendering
+
+Implementation of the counter in accordance with the [task](https://www.youtube.com/watch?v=AnT42jUgnys)
+
+** Part IV
+branch `Counter_4.0_with_Redux`
+
+Advanced counter from Part III using Redux and reducer implementation of reducers tests (without LocalStorage)
+
+
 
 ### `yarn start`
 
@@ -38,9 +57,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
