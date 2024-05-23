@@ -1,9 +1,13 @@
 import {combineReducers} from 'redux';
 import { legacy_createStore as createStore } from 'redux';
 import { counterReducer } from './counter-reducer';
+import { maxValueReducer } from './max-value-reducer';
+import { startValueReducer } from './start-value-reducer';
 
 const rootReducer = combineReducers({
- counter: counterReducer
+  counter: counterReducer,
+  maxValue: maxValueReducer,
+  startValue: startValueReducer
 });
 
 export type AppRootState = ReturnType<typeof rootReducer>

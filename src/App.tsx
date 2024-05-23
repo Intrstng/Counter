@@ -1,56 +1,40 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Counter} from './components/Counter/Counter';
 import {Settings} from './components/Settings/Settings';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootState} from './components/bll/store';
-import { CounterType, increaseCounterAC, resetCounterAC } from './components/bll/counter-reducer';
-
+import { increaseCounterAC, resetCounterAC, setCounterAC } from './components/bll/counter-reducer';
+import { setMaxValueAC } from './components/bll/max-value-reducer';
+import { setStartValueAC } from './components/bll/start-value-reducer';
 
 
 export const App = () => {
     const dispatch = useDispatch();
-    const counter = useSelector<AppRootState, number>( (state) => state.counter.value );
-
-    // const [maxValue, setMaxValue] = useState<number>(0);
-    // const [startValue, setStartValue] = useState<number>(0);
-    // const [counter, setCounter] = useState<number>(startValue);
-    // const [inputError, setInputError] = useState<boolean>(false);
-    // const [showSettings, setShowSettings] = useState<boolean>(false);
-    //
-    // useEffect(() => {
-    //     if (localStorage.hasOwnProperty('values')) {
-    //         const dataFromLocalStorage = localStorage.getItem('values');
-    //         const {
-    //             maxValue: maxValueFromLocalStorage,
-    //             startValue: startValueFromLocalStorage
-    //         } = dataFromLocalStorage && JSON.parse(dataFromLocalStorage);
-    //         setMaxValue(maxValueFromLocalStorage);
-    //         setStartValue(startValueFromLocalStorage);
-    //         setCounter(startValueFromLocalStorage);
-    //     }
-    // }, []);
+    const counter = useSelector<AppRootState, number>( (state) => state.counter.currentValue );
+    const maxValue = useSelector<AppRootState, number>( (state) => state.maxValue.currentMaxValue );
+    const startValue = useSelector<AppRootState, number>( (state) => state.startValue.currentStartValue );
+    const [inputError, setInputError] = useState<boolean>(false);
+    const [showSettings, setShowSettings] = useState<boolean>(false);
 
     const increaseCounter = () => {
-        counter < maxValue && setCounter(prevCounter => prevCounter + 1);
-        //counter < maxValue && dispatch(increaseCounterAC());
+        counter < maxValue && dispatch(increaseCounterAC());
     }
     const resetCounter = () => {
-        setCounter(startValue);
-        //dispatch(resetCounterAC())
+        dispatch(resetCounterAC(startValue));
     }
     const setMaxValueInput = (value: number) => {
-        setMaxValue(value);
+        dispatch(setMaxValueAC(value));
     }
     const setStartValueInput = (value: number) => {
-        setStartValue(value);
+        dispatch(setStartValueAC(value));
     }
     const setDataToLocalStorage = () => {
         const values = {
             maxValue,
             startValue
         }
-        setCounter(startValue);
+        dispatch(setCounterAC(startValue));
         localStorage.setItem('values', JSON.stringify(values));
         !showSettings ? setShowSettings(true) : setShowSettings(false);
     }

@@ -1,28 +1,44 @@
 
-const counterInit: any = {
-  value: 0
+export type CounterInitType = {
+  currentValue: number
+}
+
+const counterInit: CounterInitType = {
+  currentValue: 0
 }
 
 export type CounterType = {
-  value: number
+  currentValue: number
 }
 
 export const counterReducer = (state: CounterType = counterInit, action: CounterReducer): CounterType => {
-  const {type} = action;
-  switch (type) {
+  switch (action.type) {
+    case 'SET-COUNTER': {
+      return {...state, currentValue: action.payload.value};
+    }
     case 'INCREASE-COUNTER': {
-      return {...state, value: state.value + 1};
+      return {...state, currentValue: state.currentValue + 1};
     }
     case 'RESET-COUNTER': {
-      return {...state, value: 0};
+      return {...state, currentValue: action.payload.value};
     }
-
     default: return state;
   }
 }
 
-type CounterReducer = IncreaseCounterAC | ResetCounterAC
+type CounterReducer =  SetCounterAC | IncreaseCounterAC | ResetCounterAC
 
+
+type SetCounterAC = ReturnType<typeof setCounterAC>
+
+export const setCounterAC = (value: number) => {
+  return {
+    type: 'SET-COUNTER',
+    payload: {
+      value
+    }
+  } as const
+}
 
 type IncreaseCounterAC = ReturnType<typeof increaseCounterAC>
 
@@ -32,20 +48,13 @@ export const increaseCounterAC = () => {
   } as const
 }
 
-
-// type DecreaseCounterAC = ReturnType<typeof decreaseCounterAC>
-//
-// export const decreaseCounterAC = () => {
-//   return {
-//     type: 'DECREASE-COUNTER',
-//   } as const
-// }
-
-
 type ResetCounterAC = ReturnType<typeof resetCounterAC>
 
-export const resetCounterAC = () => {
+export const resetCounterAC = (value: number) => {
   return {
     type: 'RESET-COUNTER',
+    payload: {
+      value
+    }
   } as const
 }
