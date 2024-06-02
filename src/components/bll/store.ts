@@ -3,13 +3,17 @@ import { legacy_createStore as createStore } from 'redux';
 import { counterReducer } from './counter-reducer';
 import { maxValueReducer } from './max-value-reducer';
 import { startValueReducer } from './start-value-reducer';
-import { loadState, saveState } from './localStorage';
+import { loadState, saveState } from '../../utils/localStorage';
 import {throttle} from 'lodash'
+import { showSettingsReducer } from './show-settings-reducer';
+import { setInputErrorReducer } from './input-error-reducer';
 
 const rootReducer = combineReducers({
   counter: counterReducer,
   maxValue: maxValueReducer,
-  startValue: startValueReducer
+  startValue: startValueReducer,
+  showSettings: showSettingsReducer,
+  setError: setInputErrorReducer
 });
 
 const persistedState = loadState(); // added
@@ -23,10 +27,12 @@ export const store = createStore(rootReducer, persistedState);
 export type AppStoreType = typeof store // ??????
 
 store.subscribe(throttle(() => { // added
-  saveState({
-    counter: store.getState().counter,
+  saveState({ // saveState(store.getState()) or:
+    // counter: store.getState().counter,
     maxValue: store.getState().maxValue,
-    startValue: store.getState().startValue
+    startValue: store.getState().startValue,
+    showSettings: store.getState().showSettings,
+    setError: store.getState().setError,
   });
 }, 1000));
 

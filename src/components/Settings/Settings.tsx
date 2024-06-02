@@ -1,38 +1,21 @@
-import React, {FC} from 'react';
-import {SettingsController} from '../SettingsController/SettingsController';
+import React from 'react';
+import { SettingsController } from '../SettingsController/SettingsController';
 import { SettingsInterface } from '../SettingsInterface/SettingsInterface';
+import { useSelector } from 'react-redux';
+import { AppRootState } from '../bll/store';
 
-type SettingsPropsType = {
-    maxValue: number
-    startValue: number
-    inputError: boolean
-    setMaxValueInput: (value: number) => void
-    setStartValueInput: (value: number) => void
-    setInputError: (value: boolean) => void
-    setDataToLocalStorage: () => void
-}
-
-export const Settings: FC<SettingsPropsType> = ({   maxValue,
-                                                    startValue,
-                                                    inputError,
-                                                    setMaxValueInput,
-                                                    setStartValueInput,
-                                                    setInputError,
-                                                    setDataToLocalStorage
-}) => {
-
+export const Settings = () => {
+  const maxValue = useSelector<AppRootState, number>( (state) => state.maxValue.currentMaxValue );
+  const startValue = useSelector<AppRootState, number>( (state) => state.startValue.currentStartValue );
+  const inputError = useSelector<AppRootState, boolean>( (state) => state.setError.error );
     return (
         <div className={'widget'}>
             <SettingsInterface maxValue={maxValue}
                                startValue={startValue}
-                               inputError={inputError}
-                               setMaxValueInput={setMaxValueInput}
-                               setStartValueInput={setStartValueInput}
-                               setInputError={setInputError}/>
+                               inputError={inputError}/>
             <SettingsController maxValue={maxValue}
                                 startValue={startValue}
-                                inputError={inputError}
-                                setDataToLocalStorage={setDataToLocalStorage}/>
+                                inputError={inputError}/>
         </div>
     );
 };

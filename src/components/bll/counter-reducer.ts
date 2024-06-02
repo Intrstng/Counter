@@ -1,10 +1,9 @@
-
 export type CounterInitType = {
   currentValue: number
 }
 
 const counterInit: CounterInitType = {
-  currentValue: 0
+  currentValue: 3
 }
 
 export type CounterType = {
