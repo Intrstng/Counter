@@ -4,6 +4,8 @@ import { Button } from '../Button';
 import { setCounterTC } from '../bll/counter-reducer';
 import { hideSettingsTC } from '../bll/show-settings-reducer';
 import { useAppDispatch } from '../../app/hooks';
+import { setStartValueTC } from '../bll/start-value-reducer';
+import { setDataToLocalStorageTC } from '../bll/data-reducer';
 
 type SettingsController = {
   maxValue: number
@@ -46,8 +48,10 @@ export const SettingsController: FC<SettingsController> = ({ maxValue,
             currentStartValue: startValue,
         },
     }
-        dispatch(setCounterTC(newState));
-        dispatch(hideSettingsTC());
+    dispatch(setDataToLocalStorageTC(newState));
+    dispatch(setStartValueTC(newState.startValue.currentStartValue));
+    dispatch(setCounterTC(startValue));
+    dispatch(hideSettingsTC());
   }
     return (
         <div className={S.settingsController}>

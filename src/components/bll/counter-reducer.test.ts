@@ -1,4 +1,4 @@
-import { CounterInitType, counterReducer, increaseCounterAC, resetCounterAC, setCounterAC } from './counter-reducer';
+import { CounterType, counterReducer, increaseCounterAC, resetCounterAC, setCounterAC } from './counter-reducer';
 
 // ------------------- 'SET-COUNTER' ------------------- //
 
@@ -6,7 +6,7 @@ test ('counter-reducer should set new counter', () => {
   // data
   const initCounterValue = 0;
 
-  const counterState: CounterInitType = {
+  const counterState: CounterType = {
     currentValue: initCounterValue
   }
   const counterValue_1 = 5;
@@ -29,7 +29,7 @@ test ('counter-reducer should increase counter', () => {
   // data
   const initCounterValue = 0;
 
-  const counterState: CounterInitType = {
+  const counterState: CounterType = {
     currentValue: initCounterValue
   }
   const counterValue_1 = 1;
@@ -52,7 +52,7 @@ test ('counter-reducer should reset counter', () => {
   // data
   const initCounterValue = 10;
 
-  const counterState: CounterInitType = {
+  const counterState: CounterType = {
     currentValue: initCounterValue
   }
   const counterValue_1 = 5;
