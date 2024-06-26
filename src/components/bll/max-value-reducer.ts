@@ -1,3 +1,5 @@
+import { AppThunk } from './store';
+
 export type MaxValueInitType = {
   currentMaxValue: number
 }
@@ -17,7 +19,7 @@ export const maxValueReducer = (state: MaxValueInitType = maxValueInit, action: 
 }
 
 
-type SetMaxValueAC = ReturnType<typeof setMaxValueAC>
+export type SetMaxValueAC = ReturnType<typeof setMaxValueAC>
 
 export const setMaxValueAC = (value: number) => {
   return {
@@ -26,4 +28,8 @@ export const setMaxValueAC = (value: number) => {
       value
     }
   } as const
+}
+
+export const setMaxValueTC = (value: number): AppThunk => (dispatch) => {
+  dispatch(setMaxValueAC(value))
 }

@@ -1,10 +1,10 @@
-import React, {ChangeEvent, FC} from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import S from './SettingsInterface.module.css';
-import {Input} from '../Input/Input';
-import { setMaxValueAC } from '../bll/max-value-reducer';
-import { setStartValueAC } from '../bll/start-value-reducer';
-import { useDispatch } from 'react-redux';
-import { setInputErrorAC, unsetInputErrorAC } from '../bll/input-error-reducer';
+import { Input } from '../Input/Input';
+import { setMaxValueTC } from '../bll/max-value-reducer';
+import { setStartValueTC } from '../bll/start-value-reducer';
+import { setInputErrorTC, unsetInputErrorTC } from '../bll/input-error-reducer';
+import { useAppDispatch } from '../../app/hooks';
 
 type SettingsInterfacePropsType = {
     maxValue: number
@@ -16,24 +16,24 @@ export const SettingsInterface: FC<SettingsInterfacePropsType> = ({ maxValue,
                                                                     startValue,
                                                                     inputError
 }) => {
-    const dispatch = useDispatch();
-    const setMaxValueInput = (value: number) => dispatch(setMaxValueAC(value));
-    const setStartValueInput = (value: number) => dispatch(setStartValueAC(value));
+    const dispatch = useAppDispatch();
+    const setMaxValueInput = (value: number) => dispatch(setMaxValueTC(value));
+    const setStartValueInput = (value: number) => dispatch(setStartValueTC(value));
 
     const onChangeMaxValueInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
       if ((Number(e.currentTarget.value) < 0 || startValue < 0)
           || Number(e.currentTarget.value) <= startValue
       ) {
-        dispatch(setInputErrorAC())
-      } else dispatch(unsetInputErrorAC())
+        dispatch(setInputErrorTC())
+      } else dispatch(unsetInputErrorTC())
       setMaxValueInput(Number(e.currentTarget.value));
     }
     const onChangeMinValueInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
       if ((Number(e.currentTarget.value) < 0 || maxValue < 0)
           || Number(e.currentTarget.value) >= maxValue
       ) {
-        dispatch(setInputErrorAC())
-      } else dispatch(unsetInputErrorAC())
+        dispatch(setInputErrorTC())
+      } else dispatch(unsetInputErrorTC())
       setStartValueInput(Number(e.currentTarget.value));
     }
 

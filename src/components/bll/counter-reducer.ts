@@ -1,3 +1,7 @@
+import { AppThunk } from './store';
+import { StateToLocalStorage } from '../SettingsController/SettingsController';
+import { saveState } from '../../utils/localStorage';
+
 export type CounterInitType = {
   currentValue: number
 }
@@ -25,7 +29,7 @@ export const counterReducer = (state: CounterType = counterInit, action: Counter
   }
 }
 
-type CounterReducer =  SetCounterAC | IncreaseCounterAC | ResetCounterAC
+export type CounterReducer =  SetCounterAC | IncreaseCounterAC | ResetCounterAC
 
 
 type SetCounterAC = ReturnType<typeof setCounterAC>
@@ -56,4 +60,18 @@ export const resetCounterAC = (value: number) => {
       value
     }
   } as const
+}
+
+export const setCounterTC = (newState: StateToLocalStorage): AppThunk => async (dispatch) => {
+    // Sets data to LocalStorage and set startValue of the counter
+    await saveState(newState);
+    dispatch(setCounterAC(newState.startValue.currentStartValue))
+}
+
+export const increaseCounterTC = (): AppThunk => (dispatch) => {
+  dispatch(increaseCounterAC())
+}
+
+export const resetCounterTC = (): AppThunk => (dispatch, getState) => {
+  dispatch(resetCounterAC(getState().startValue.currentStartValue))
 }

@@ -1,12 +1,9 @@
-import {combineReducers} from 'redux';
-import { legacy_createStore as createStore } from 'redux';
-import { counterReducer } from './counter-reducer';
-import { maxValueReducer } from './max-value-reducer';
-import { startValueReducer } from './start-value-reducer';
-import { loadState, saveState } from '../../utils/localStorage';
-import {throttle} from 'lodash'
-import { showSettingsReducer } from './show-settings-reducer';
-import { setInputErrorReducer } from './input-error-reducer';
+import { combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { CounterReducer, counterReducer } from './counter-reducer';
+import { maxValueReducer, SetMaxValueAC } from './max-value-reducer';
+import { SetStartValueAC, startValueReducer } from './start-value-reducer';
+import { showSettingsReducer, ShowToggleReducer } from './show-settings-reducer';
+import { InputErrorSetterReducer, setInputErrorReducer } from './input-error-reducer';
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -16,26 +13,18 @@ const rootReducer = combineReducers({
   setError: setInputErrorReducer
 });
 
-const persistedState = loadState(); // added
+export const store = configureStore({
+  reducer: rootReducer,
+});
 
-export type AppRootState = ReturnType<typeof rootReducer>
-
-// createStore deprecated change to -> configureStore
-// import { legacy_createStore as createStore } from 'redux';
-export const store = createStore(rootReducer, persistedState);
-
-export type AppStoreType = typeof store // ??????
-
-store.subscribe(throttle(() => { // added
-  saveState({ // saveState(store.getState()) or:
-    // counter: store.getState().counter,
-    maxValue: store.getState().maxValue,
-    startValue: store.getState().startValue,
-    showSettings: store.getState().showSettings,
-    setError: store.getState().setError,
-  });
-}, 1000));
-
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+type AppActionsType = SetStartValueAC
+                      | SetMaxValueAC
+                      | ShowToggleReducer
+                      | InputErrorSetterReducer
+                      | CounterReducer
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, AppActionsType>
 
 Object.defineProperty(window, 'store', {
   value: store,

@@ -32,10 +32,21 @@ Advanced counter from Part III using Redux and reducer implementation of reducer
 
 branch: `Counter_5.0_with_Redux_and_Local_Storage`
 
-Advanced counter from Part IV (Redux State to Local Storage).
+Advanced counter from Part IV (Redux State to Local Storage using Dan Abramov`s variant).
 
 [Persisting Redux State to Local Storage](https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e)
 
+## Part VI
+
+branch: `Counter_6.0_with_Redux_and_Local_Storage_useSelectors_inside_the_components`
+
+Refactoring previous task
+
+## Part VII
+
+branch: `Counter_7.0_Redux_using_LocalStorage_with_Thunks`
+
+Implement counter with Redux and LocalStorage with Thunks
 
 ### `yarn start`
 

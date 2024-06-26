@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Button } from '../Button';
 import S from './Controller.module.css';
-import { increaseCounterAC, resetCounterAC } from '../bll/counter-reducer';
-import { useDispatch } from 'react-redux';
-import { showSettingsAC } from '../bll/show-settings-reducer';
+import { increaseCounterTC, resetCounterTC } from '../bll/counter-reducer';
+import { showSettingsTC } from '../bll/show-settings-reducer';
+import { useAppDispatch } from '../../app/hooks';
 
 type ControllerPropsType = {
     counter: number
@@ -19,10 +19,10 @@ export const Controller: FC<ControllerPropsType> = (
         startValue,
         inputError
     }) => {
-  const dispatch = useDispatch();
-  const increaseCounter = () => counter < maxValue && dispatch(increaseCounterAC());
-  const resetCounter = () => dispatch(resetCounterAC(startValue));
-  const onClickShowSettingsHandler = () => dispatch(showSettingsAC());
+  const dispatch = useAppDispatch();
+  const increaseCounter = () => counter < maxValue && dispatch(increaseCounterTC());
+  const resetCounter = () => dispatch(resetCounterTC());
+  const onClickShowSettingsHandler = () => dispatch(showSettingsTC());
 
     return (
       <div className={S.controller}>

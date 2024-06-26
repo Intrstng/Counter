@@ -2,17 +2,15 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Counter } from './components/Counter/Counter';
 import { Settings } from './components/Settings/Settings';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppRootState } from './components/bll/store';
-import { setCounterAC } from './components/bll/counter-reducer';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+import { setDataFromLocalStorageToStateTC } from './components/bll/data-reducer';
 
 export const App = () => {
-    const dispatch = useDispatch();
-    const startValue = useSelector<AppRootState, number>( (state) => state.startValue.currentStartValue );
-    const showSettings = useSelector<AppRootState, boolean>( (state) => state.showSettings.flag );
+    const dispatch = useAppDispatch();
+    const showSettings = useAppSelector( (state) => state.showSettings.flag );
 
     useEffect(() => {
-        dispatch(setCounterAC(startValue));
+        dispatch(setDataFromLocalStorageToStateTC())
     }, []);
 
     return (

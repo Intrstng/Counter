@@ -1,3 +1,5 @@
+import { AppThunk } from './store';
+
 export type SetInputErrorInitType = {
   error: boolean
 }
@@ -22,7 +24,7 @@ export const setInputErrorReducer = (state: SetInputErrorType = SetInputErrorIni
   }
 }
 
-type InputErrorSetterReducer =  SetInputErrorAC | UnsetInputErrorAC
+export type InputErrorSetterReducer =  SetInputErrorAC | UnsetInputErrorAC
 
 
 type SetInputErrorAC = ReturnType<typeof setInputErrorAC>
@@ -39,4 +41,12 @@ export const unsetInputErrorAC = () => {
   return {
     type: 'UNSET-ERROR',
   } as const
+}
+
+export const setInputErrorTC = (): AppThunk => (dispatch) => {
+  dispatch(setInputErrorAC())
+}
+
+export const unsetInputErrorTC = (): AppThunk => (dispatch) => {
+  dispatch(unsetInputErrorAC())
 }
