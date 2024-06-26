@@ -8,7 +8,6 @@ import { setDataFromLocalStorageToStateTC } from './components/bll/data-reducer'
 export const App = () => {
     const dispatch = useAppDispatch();
     const showSettings = useAppSelector( (state) => state.showSettings.flag );
-
     useEffect(() => {
         dispatch(setDataFromLocalStorageToStateTC())
     }, []);

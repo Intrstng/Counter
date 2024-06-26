@@ -30,7 +30,7 @@ export const Controller: FC<ControllerPropsType> = (
                 callback={increaseCounter}
                 name={'inc'}
                 classList={S.btn}/>
-        <Button isDisabled={inputError || counter === startValue}
+        <Button isDisabled={inputError || !(counter <= maxValue) || counter === startValue}
                 callback={resetCounter}
                 name={'reset'}
                 classList={S.btn}/>
