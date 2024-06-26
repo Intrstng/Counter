@@ -1,13 +1,13 @@
 import React from 'react';
 import { SettingsController } from '../SettingsController/SettingsController';
 import { SettingsInterface } from '../SettingsInterface/SettingsInterface';
-import { useSelector } from 'react-redux';
-import { AppRootState } from '../bll/store';
+import { useAppSelector } from '../../app/hooks';
 
 export const Settings = () => {
-  const maxValue = useSelector<AppRootState, number>( (state) => state.maxValue.currentMaxValue );
-  const startValue = useSelector<AppRootState, number>( (state) => state.startValue.currentStartValue );
-  const inputError = useSelector<AppRootState, boolean>( (state) => state.setError.error );
+  const maxValue = useAppSelector( (state) => state.maxValue.currentMaxValue );
+  const startValue = useAppSelector( (state) => state.startValue.currentStartValue );
+  const inputError = useAppSelector( (state) => state.setError.error );
+
     return (
         <div className={'widget'}>
             <SettingsInterface maxValue={maxValue}

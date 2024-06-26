@@ -1,3 +1,5 @@
+import { AppThunk } from './store';
+
 export type StartValueInitType = {
   currentStartValue: number
 }
@@ -17,7 +19,7 @@ export const startValueReducer = (state: StartValueInitType = startValueInit, ac
 }
 
 
-type SetStartValueAC = ReturnType<typeof setStartValueAC>
+export type SetStartValueAC = ReturnType<typeof setStartValueAC>
 
 export const setStartValueAC = (value: number) => {
   return {
@@ -26,4 +28,8 @@ export const setStartValueAC = (value: number) => {
       value
     }
   } as const
+}
+
+export const setStartValueTC = (value: number): AppThunk => (dispatch) => {
+    dispatch(setStartValueAC(value))
 }

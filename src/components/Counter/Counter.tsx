@@ -1,15 +1,14 @@
 import React from 'react';
 import { View } from '../View/View';
 import { Controller } from '../Controller/Controller';
-import { useSelector } from 'react-redux';
-import { AppRootState } from '../bll/store';
+import { useAppSelector } from '../../app/hooks';
 
 
 export const Counter = () => {
-  const counter = useSelector<AppRootState, number>( (state) => state.counter.currentValue );
-  const maxValue = useSelector<AppRootState, number>( (state) => state.maxValue.currentMaxValue );
-  const startValue = useSelector<AppRootState, number>( (state) => state.startValue.currentStartValue );
-  const inputError = useSelector<AppRootState, boolean>( (state) => state.setError.error );
+  const counter = useAppSelector( (state) => state.counter.currentValue );
+  const maxValue = useAppSelector( (state) => state.maxValue.currentMaxValue );
+  const startValue = useAppSelector( (state) => state.startValue.currentStartValue );
+  const inputError = useAppSelector( (state) => state.setError.error );
     return (
       <div className={'widget'}>
           <View value={counter}

@@ -1,3 +1,5 @@
+import { AppThunk } from './store';
+
 export type ShowSettingsInitType = {
   flag: boolean
 }
@@ -22,8 +24,7 @@ export const showSettingsReducer = (state: ShowSettingsType = showSettingsInit, 
   }
 }
 
-type ShowToggleReducer =  ShowSettingsAC | HideSettingsAC
-
+export type ShowToggleReducer =  ShowSettingsAC | HideSettingsAC
 
 type ShowSettingsAC = ReturnType<typeof showSettingsAC>
 
@@ -39,4 +40,12 @@ export const hideSettingsAC = () => {
   return {
     type: 'HIDE-SETTINGS',
   } as const
+}
+
+export const showSettingsTC = (): AppThunk => (dispatch) => {
+  dispatch(showSettingsAC())
+}
+
+export const hideSettingsTC = (): AppThunk => (dispatch) => {
+  dispatch(hideSettingsAC())
 }
